@@ -1,5 +1,5 @@
 /**
- * Array of objects containing API project page data.
+ * Array of objects containing API project card data.
  */
 const projectCards = [
   {
@@ -13,6 +13,12 @@ const projectCards = [
     description: "List of country and their flags",
     imageURL: "./assets/images/country-flags.png",
     URL: "./apis/country-flag-api/index.html",
+  },
+  {
+    name: "Country Filter",
+    description: "Listing country using filter",
+    imageURL: "./assets/images/country-filter.png",
+    URL: "./apis/country-filter-api/index.html",
   },
 ];
 

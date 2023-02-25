@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="synthwave">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Country Filter Form</title>
+  <link rel="shortcut icon" href="../../assets/logos/api-logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@2.51.0/dist/full.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+  <div class="container p-5 mx-auto sm:p-2">
+    <header class="my-4">
+      <div class="flex items-center justify-between">
+        <button id="home-btn" class="text-2xl btn"><i class="bi bi-house-fill"></i></button>
+        <h1 class="text-3xl font-bold text-center">Filtering flags...😐</h1>
+      </div>
+    </header>
+
+    <div class="divider"></div>
+
+    <main>
+      <div class="flex flex-col items-start gap-2 my-4 sm:items-end sm:flex-row">
+        <div>
+          <label class="label">
+            <span class="label-text">Filter by</span>
+          </label>
+          <select id="filter-by-option" class="w-full max-w-xs select select-accent">
+            <option value="all" selected>All</option>
+            <option value="region">Region</option>
+            <option value="capital">Capital</option>
+            <option value="lang">Language</option>
+          </select>
+        </div>
+        <div>
+          <label class="label">
+            <span class="label-text">Search</span>
+          </label>
+          <input id="filter-text-field" type="text" placeholder="Type here" class="w-full max-w-xs input input-bordered input-accent" />
+        </div>
+        <button id="filter-btn" class="btn btn-outline btn-accent" type="submit">Filter</button>
+      </div>
+      <div id="country-container" class="grid grid-cols-1 gap-1 lg:grid-cols-4 md:grid-cols-3">
+        
+      </div>
+    </main>
+  </div>
+
+  <script src="../../js/utility.js"></script>
+  <script src="country-flag.js"></script>
+</body>
+
+</html>
