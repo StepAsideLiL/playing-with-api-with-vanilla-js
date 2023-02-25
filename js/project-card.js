@@ -9,10 +9,10 @@ const projectCards = [
     URL: "./apis/kanye-quote-api/index.html",
   },
   {
-    name: "Country Info",
-    description: "Sort countries with similarity",
+    name: "Country Flags",
+    description: "List of country and their flags",
     imageURL: "./assets/images/country-flags.png",
-    URL: "./apis/country-info-api/index.html",
+    URL: "./apis/country-flag-api/index.html",
   },
 ];
 
