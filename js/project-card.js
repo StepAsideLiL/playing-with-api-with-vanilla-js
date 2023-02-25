@@ -6,7 +6,13 @@ const projectCards = [
     name: "Kanye Quote",
     description: "Randomly shows quotes the great Kanye West said",
     imageURL: "./assets/images/kanye-quotes.png",
-    URL: "./kanye-quote-api/index.html",
+    URL: "./apis/kanye-quote-api/index.html",
+  },
+  {
+    name: "Country Info",
+    description: "Sort countries with similarity",
+    imageURL: "./assets/images/country-flags.png",
+    URL: "./apis/country-info-api/index.html",
   },
 ];
 

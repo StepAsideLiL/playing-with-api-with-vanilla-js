@@ -9,3 +9,18 @@ function randomColor() {
   }
   return `#${color}`;
 }
+
+/**
+ * Get the data from the API.
+ * @param {string} API API URL link.
+ * @returns object|array
+ */
+async function getData(API) {
+  try {
+    const response = await fetch(API);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}
