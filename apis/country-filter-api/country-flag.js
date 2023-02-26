@@ -44,30 +44,54 @@ function countryAPI(option, search) {
 }
 
 filterBtn.addEventListener("click", function () {
-  countryContainerElement.innerHTML = "";
+  countryContainerElement.innerHTML = "Loading...";
   getData(countryAPI(filterByOption, filterTextField)).then((data) => {
     getCountry(data);
   });
 });
 
 function getCountry(countrys) {
+  countryContainerElement.innerHTML = "";
   for (const country of countrys) {
+    console.log(country);
     countryContainerElement.innerHTML += template(country);
   }
 }
 
-function template({ name, flags, region, capital }) {
-  return `
-    <div class="shadow-xl card bg-base-100">
-      <figure class="px-10 pt-10">
-        <img src="${flags.png}" alt="${flags.alt}" class="rounded-xl" />
-      </figure>
-      <div class="card-body">
-        <h2 class="card-title">${name.common}</h2>
-        <p>Official: <span class="font-semibold">${name.official}</span></p>
-        <p>Capital: <span class="font-semibold">${capital.join(", ")}</span></p>
-        <p>Region: <span class="font-semibold">${region}</span></p>
+function template(country) {
+  const { name, flags, region, capital } = country;
+  let capitalValue;
+  if ("capital" in country) {
+    return `
+      <div class="shadow-xl card bg-base-100">
+        <figure class="px-10 pt-10">
+          <img src="${flags.png}" alt="${flags.alt}" class="rounded-xl" />
+        </figure>
+        <div class="card-body">
+          <h2 class="card-title">${name.common}</h2>
+          <p>Official: <span class="font-semibold">${name.official}</span></p>
+          <p>Capital:
+            <span class="font-semibold">${[...capital].join(", ")}</span>
+          </p>
+          <p>Region: <span class="font-semibold">${region}</span></p>
+        </div>
       </div>
-    </div>
-  `;
+    `;
+  } else {
+    return `
+      <div class="shadow-xl card bg-base-100">
+        <figure class="px-10 pt-10">
+          <img src="${flags.png}" alt="${flags.alt}" class="rounded-xl" />
+        </figure>
+        <div class="card-body">
+          <h2 class="card-title">${name.common}</h2>
+          <p>Official: <span class="font-semibold">${name.official}</span></p>
+          <p>Capital:
+            <span class="font-semibold text-red-700">No Capital</span>
+          </p>
+          <p>Region: <span class="font-semibold">${region}</span></p>
+        </div>
+      </div>
+    `;
+  }
 }
