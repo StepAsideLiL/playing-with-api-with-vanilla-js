@@ -20,6 +20,12 @@ const projectCards = [
     imageURL: "./assets/images/country-filter.png",
     URL: "./apis/country-filter-api/index.html",
   },
+  {
+    name: "Billionaire",
+    description: "Who are the Billionaires",
+    imageURL: "./assets/images/top-one.png",
+    URL: "./apis/billionaire-api/index.html",
+  },
 ];
 
 /**
