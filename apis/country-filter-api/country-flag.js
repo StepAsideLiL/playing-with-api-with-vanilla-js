@@ -9,10 +9,13 @@ const filterByOption = document.querySelector("#filter-by-option");
 const filterTextField = document.querySelector("#filter-text-field");
 const filterBtn = document.querySelector("#filter-btn");
 const countryContainerElement = document.querySelector("#country-container");
+const loadingElement = document.querySelector("#loading");
+const notFoundElement = document.querySelector("#not-found");
 
 filterTextField.disabled = true;
 
 filterByOption.addEventListener("change", function () {
+  notFoundElement.classList.add("hidden");
   if (this.value === "all") {
     filterTextField.disabled = true;
     filterBtn.disabled = false;
@@ -26,11 +29,19 @@ filterByOption.addEventListener("change", function () {
   }
 });
 
-filterTextField.addEventListener("keyup", function () {
+filterTextField.addEventListener("keyup", function (event) {
+  notFoundElement.classList.add("hidden");
   if (this.value === "") {
     filterBtn.disabled = true;
   } else {
     filterBtn.disabled = false;
+    if (event.key === "Enter") {
+      countryContainerElement.innerHTML = "";
+      loadingElement.classList.remove("hidden");
+      getData(countryAPI(filterByOption, filterTextField)).then((countrys) => {
+        getCountry(countrys);
+      });
+    }
   }
 });
 
@@ -44,23 +55,27 @@ function countryAPI(option, search) {
 }
 
 filterBtn.addEventListener("click", function () {
-  countryContainerElement.innerHTML = "Loading...";
-  getData(countryAPI(filterByOption, filterTextField)).then((data) => {
-    getCountry(data);
+  countryContainerElement.innerHTML = "";
+  notFoundElement.classList.add("hidden");
+  loadingElement.classList.remove("hidden");
+  getData(countryAPI(filterByOption, filterTextField)).then((countrys) => {
+    getCountry(countrys);
   });
 });
 
 function getCountry(countrys) {
-  countryContainerElement.innerHTML = "";
+  console.log(countrys);
+  loadingElement.classList.add("hidden");
+  if (countrys.status === 404) {
+    notFoundElement.classList.remove("hidden");
+  }
   for (const country of countrys) {
-    console.log(country);
     countryContainerElement.innerHTML += template(country);
   }
 }
 
 function template(country) {
   const { name, flags, region, capital } = country;
-  let capitalValue;
   if ("capital" in country) {
     return `
       <div class="shadow-xl card bg-base-100">

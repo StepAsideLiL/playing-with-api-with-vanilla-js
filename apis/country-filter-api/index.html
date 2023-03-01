@@ -40,13 +40,28 @@
           <label class="label">
             <span class="label-text">Search</span>
           </label>
-          <input id="filter-text-field" type="text" placeholder="Type here" class="w-full max-w-xs input input-bordered input-accent" />
+          <input id="filter-text-field" type="text" placeholder="Type here"
+            class="w-full max-w-xs input input-bordered input-accent" />
         </div>
         <button id="filter-btn" class="btn btn-outline btn-accent" type="submit">Filter</button>
       </div>
+
       <div id="country-container" class="grid grid-cols-1 gap-1 lg:grid-cols-4 md:grid-cols-3">
-        
       </div>
+      
+      <div id="loading" class="hidden">
+        <div class="flex items-center justify-center w-[8.64px] h-[8.64px] mx-auto text-2xl mt-28 animate-spin">
+          <i class="bi bi-arrow-repeat"></i>
+        </div>
+      </div>
+
+      <div id="not-found" class="hidden">
+        <div class="text-2xl font-medium text-center mt-28">
+          <p>No Country Found!</p>
+          <p>May be search other planet!!🥱</p>
+        </div>
+      </div>
+
     </main>
   </div>
 
