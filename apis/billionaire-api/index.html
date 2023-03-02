@@ -13,7 +13,51 @@
 </head>
 
 <body>
-  <h1>hello</h1>
+  <div class="container p-5 mx-auto sm:p-2">
+
+    <header class="my-4">
+
+      <div class="flex items-center justify-between">
+        <button id="home-btn" class="text-2xl btn"><i class="bi bi-house-fill"></i></button>
+        <h1 class="text-3xl font-bold text-center">If you are a billionaire, you are in the API.</h1>
+      </div>
+
+    </header>
+
+    <div class="divider"></div>
+
+    <main>
+      <div class="flex h-96">
+
+        <div class="flex-[1] px-5 py-3 bg-primary text-primary-content">
+          <button id="list-btn" class="w-full btn btn-accent">List</button>
+        </div>
+
+        <div class="flex-[3] px-5 py-3 bg-base-content">
+          <div class="h-full overflow-auto rounded-md">
+            <table class="table w-full table-zebra">
+
+              <!-- head -->
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>Person</th>
+                  <th>Citizenship</th>
+                  <th>Industry</th>
+                  <th>Wealth(M)</th>
+                </tr>
+              </thead>
+
+              <tbody id="billionaire-list">
+              </tbody>
+
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
 
   <script src="../../js/utility.js"></script>
   <script src="billionaire.js"></script>
